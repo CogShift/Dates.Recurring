@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Humanizer;
 
 namespace Dates.Recurring.Type
 {
     public class Daily : RecurrenceType
     {
-        public Daily(int days, DateTime starting, DateTime? endingAfterDate, int? endingAfterNumOfOccurrences) 
-            : base(days, starting, endingAfterDate, endingAfterNumOfOccurrences)
-        {
-
-        }
+        public Daily(int days, DateTime starting, DateTime? endingAfterDate, int? endingAfterNumOfOccurrences)
+            : base(days, starting, endingAfterDate, endingAfterNumOfOccurrences) { }
 
         public override IEnumerable<DateTime> GetSchedule(DateTime? forecastLimit = null)
         {
@@ -28,8 +20,8 @@ namespace Dates.Recurring.Type
                 occurrenceCount++;
 
 
-                if ((EndingAfterDate.HasValue && next > EndingAfterDate.Value) ||
-                    (EndingAfterNumOfOccurrences.HasValue && occurrenceCount > EndingAfterNumOfOccurrences) ||
+                if (EndingAfterDate.HasValue && next > EndingAfterDate.Value ||
+                    EndingAfterNumOfOccurrences.HasValue && occurrenceCount > EndingAfterNumOfOccurrences ||
                     next > forecastLimit ||
                     (DateTime.MaxValue.AddDays(-X) - next).Days == 0)
                     yield break;
@@ -38,7 +30,6 @@ namespace Dates.Recurring.Type
                     yield return next;
 
                 next = next.AddDays(X);
-
             }
         }
     }

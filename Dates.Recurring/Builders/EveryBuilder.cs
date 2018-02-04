@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dates.Recurring.Builders
 {
     public class EveryBuilder
     {
-        private DateTime _starting;
-        private int _x;
+        private readonly DateTime _starting;
+        private readonly int _x;
 
         public EveryBuilder(DateTime starting, int x)
         {

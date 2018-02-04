@@ -1,16 +1,12 @@
-﻿using Dates.Recurring.Type;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Dates.Recurring.Type;
 
 namespace Dates.Recurring.Builders
 {
     public class WeeksBuilder
     {
-        private int _weeks;
-        private DateTime _starting;
+        private readonly int _weeks;
+        private readonly DateTime _starting;
         private DateTime? _endingAfterDate;
         private Day _days;
         private int? _endingAfterNumOfOccurrences;
@@ -42,7 +38,7 @@ namespace Dates.Recurring.Builders
 
         public WeeksBuilder OnDay(DayOfWeek day)
         {
-            switch(day)
+            switch (day)
             {
                 case DayOfWeek.Sunday:
                     _days = Day.SUNDAY;

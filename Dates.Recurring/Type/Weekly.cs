@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Humanizer;
 
 namespace Dates.Recurring.Type
@@ -11,7 +8,8 @@ namespace Dates.Recurring.Type
     {
         public Day Days { get; set; }
 
-        public Weekly(int weeks, DateTime starting, DateTime? endingAfterDate, int? endingAfterNumOfOccurrences, Day days) : base(weeks, starting, endingAfterDate, endingAfterNumOfOccurrences)
+        public Weekly(int weeks, DateTime starting, DateTime? endingAfterDate, int? endingAfterNumOfOccurrences, Day days)
+            : base(weeks, starting, endingAfterDate, endingAfterNumOfOccurrences)
         {
             Days = days;
         }
@@ -28,8 +26,8 @@ namespace Dates.Recurring.Type
                 {
                     occurrenceCount++;
 
-                    if ((EndingAfterDate.HasValue && next > EndingAfterDate.Value) ||
-                        (EndingAfterNumOfOccurrences.HasValue && occurrenceCount > EndingAfterNumOfOccurrences) ||
+                    if (EndingAfterDate.HasValue && next > EndingAfterDate.Value ||
+                        EndingAfterNumOfOccurrences.HasValue && occurrenceCount > EndingAfterNumOfOccurrences ||
                         next > forecastLimit ||
                         (DateTime.MaxValue.AddDays(-(X * 7)) - next).Days <= 0)
                         yield break;

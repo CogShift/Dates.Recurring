@@ -1,17 +1,13 @@
-﻿using Dates.Recurring.Type;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Dates.Recurring.Type;
 
 namespace Dates.Recurring.Builders
 {
     public class MonthsBuilder
     {
-        private int _skipMonths;
+        private readonly int _skipMonths;
         private int _dayOfMonth = 1;
-        private DateTime _starting;
+        private readonly DateTime _starting;
         private DateTime? _endingAfterDate;
         private int? _endingAfterNumOfOccurrences;
 

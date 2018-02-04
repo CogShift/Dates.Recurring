@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Humanizer;
 
 namespace Dates.Recurring.Type
@@ -12,7 +8,8 @@ namespace Dates.Recurring.Type
     {
         public int DayOfMonth { get; set; }
 
-        public Monthly(int skipMonths, int dayOfMonth, DateTime starting, DateTime? endingAfterDate, int? endingAfterNumOfOccurrences) : base(skipMonths, starting, endingAfterDate, endingAfterNumOfOccurrences)
+        public Monthly(int skipMonths, int dayOfMonth, DateTime starting, DateTime? endingAfterDate, int? endingAfterNumOfOccurrences)
+            : base(skipMonths, starting, endingAfterDate, endingAfterNumOfOccurrences)
         {
             DayOfMonth = dayOfMonth;
         }
@@ -29,8 +26,8 @@ namespace Dates.Recurring.Type
                 {
                     occurrenceCount++;
 
-                    if ((EndingAfterDate.HasValue && next > EndingAfterDate.Value) ||
-                        (EndingAfterNumOfOccurrences.HasValue && occurrenceCount > EndingAfterNumOfOccurrences) ||
+                    if (EndingAfterDate.HasValue && next > EndingAfterDate.Value ||
+                        EndingAfterNumOfOccurrences.HasValue && occurrenceCount > EndingAfterNumOfOccurrences ||
                         next > forecastLimit ||
                         (DateTime.MaxValue.AddMonths(-X) - next).Days <= 0)
                         yield break;
@@ -38,7 +35,7 @@ namespace Dates.Recurring.Type
                         yield return next;
                 }
 
-                int dayOfMonth = Math.Min(DayOfMonth, DateTime.DaysInMonth(next.Year, next.Month));
+                var dayOfMonth = Math.Min(DayOfMonth, DateTime.DaysInMonth(next.Year, next.Month));
 
                 if (next.Day < dayOfMonth)
                 {
@@ -47,7 +44,7 @@ namespace Dates.Recurring.Type
                 else
                 {
                     // Rewind to the first of the month.
-                    next = next + ((-1 * next.Day) + 1).Days();
+                    next = next + (-1 * next.Day + 1).Days();
 
                     // Skip ahead by the required number of months.
                     next = next.AddMonths(X);
@@ -57,9 +54,8 @@ namespace Dates.Recurring.Type
 
         private bool DayOfMonthMatched(DateTime date)
         {
-            int dayOfMonth = Math.Min(DayOfMonth, DateTime.DaysInMonth(date.Year, date.Month));
-            return (date.Day == dayOfMonth);
+            var dayOfMonth = Math.Min(DayOfMonth, DateTime.DaysInMonth(date.Year, date.Month));
+            return date.Day == dayOfMonth;
         }
-
     }
 }

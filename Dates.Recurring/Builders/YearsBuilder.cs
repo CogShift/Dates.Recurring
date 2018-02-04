@@ -1,18 +1,14 @@
-﻿using Dates.Recurring.Type;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Dates.Recurring.Type;
 
 namespace Dates.Recurring.Builders
 {
     public class YearsBuilder
     {
-        private int _skipYears;
+        private readonly int _skipYears;
         private int _dayOfMonth = 1;
         private Month _month = Month.JANUARY;
-        private DateTime _starting;
+        private readonly DateTime _starting;
         private DateTime? _endingAfterDate;
         private int? _endingAfterNumOfOccurrences;
 
@@ -48,7 +44,7 @@ namespace Dates.Recurring.Builders
 
         public YearsBuilder OnMonth(DateTime dateTime)
         {
-            switch(dateTime.Month)
+            switch (dateTime.Month)
             {
                 case 1:
                     _month = Month.JANUARY;

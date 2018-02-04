@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dates.Recurring.Type
 {
@@ -22,6 +20,7 @@ namespace Dates.Recurring.Type
         }
 
         public abstract IEnumerable<DateTime> GetSchedule(DateTime? forecastLimit = null);
+
         public DateTime? Next(DateTime after)
         {
             return GetSchedule(DateTime.MaxValue)

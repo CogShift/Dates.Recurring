@@ -1,16 +1,12 @@
-﻿using Dates.Recurring.Type;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Dates.Recurring.Type;
 
 namespace Dates.Recurring.Builders
 {
     public class DaysBuilder
     {
-        private int _days;
-        private DateTime _starting;
+        private readonly int _days;
+        private readonly DateTime _starting;
         private DateTime? _endingAfterDate;
         private int? _endingAfterNumOfOccurrences;
 

@@ -1,16 +1,11 @@
-﻿using Xunit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Dates.Recurring.Type;
+using Xunit;
 
 namespace Dates.Recurring.Tests
 {
     public class YearlyRecurrenceTests
     {
-
         [Fact]
         public void Yearly_EveryYear()
         {
@@ -175,4 +170,3 @@ namespace Dates.Recurring.Tests
         }
     }
 }
-

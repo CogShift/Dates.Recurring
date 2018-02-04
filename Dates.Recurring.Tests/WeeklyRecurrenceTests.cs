@@ -1,10 +1,6 @@
-﻿using Xunit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Dates.Recurring.Type;
+using Xunit;
 
 namespace Dates.Recurring.Tests
 {
@@ -61,7 +57,7 @@ namespace Dates.Recurring.Tests
         public void Weekly_EveryWeek_TwoDaysAfterDateTime()
         {
             // Arrange.
-            DateTime startDate = new DateTime(2015, 1, 1);
+            var startDate = new DateTime(2015, 1, 1);
 
             IRecurring weekly = Recurs
                 .Starting(startDate)
