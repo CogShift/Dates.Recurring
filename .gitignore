@@ -5,3 +5,4 @@ packages/
 *.suo
 *.user
 *.ncrunchproject
+/.vs/Dates.Recurring/v15/Server/sqlite3
