@@ -13,7 +13,6 @@ namespace Dates.Recurring.Type
         {
             var occurrenceCount = 0;
             var next = Starting;
-            var after = Starting - 1.Days();
 
             while (true)
             {
@@ -26,8 +25,7 @@ namespace Dates.Recurring.Type
                     (DateTime.MaxValue.AddDays(-X) - next).Days == 0)
                     yield break;
 
-                if (next > after)
-                    yield return next;
+                yield return next;
 
                 next = next.AddDays(X);
             }
